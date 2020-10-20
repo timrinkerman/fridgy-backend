@@ -1,0 +1,2 @@
+module UserRecipiesHelper
+end
