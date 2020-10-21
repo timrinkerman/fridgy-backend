@@ -2,13 +2,13 @@ class UserRecipesController < ApplicationController
   def index 
     user_recipe = UserRecipe.all
 
-    render json: user_recipe, only: [:id, :title, :ingredients, :sourceUrl, :image, :user_id]
+    render json: user_recipe, only: [:id, :title, :ingredients, :readyInMinutes, :sourceUrl, :image, :user_id]
 end
 
 def create 
-    user_recipe = UserRecipe.create!(title:params[:title], ingredients:params[:ingredients], sourceUrl:params[:sourceUrl], image:params[:image], user_id:params[:user_id])
+    user_recipe = UserRecipe.create!(title:params[:title], ingredients:params[:ingredients], readyInMinutes:params[:readyInMinutes], sourceUrl:params[:sourceUrl], image:params[:image], user_id:params[:user_id])
     all_recipes = User.find(params[:user_id]).user_recipes        
-    render json: all_recipes, only: [:title, :ingredients, :sourceUrl, :image, :user_id]
+    render json: all_recipes, only: [:title, :ingredients, :readyInMinutes, :sourceUrl, :image, :user_id]
 end
 def destroy
   
